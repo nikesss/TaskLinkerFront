@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import ArticleList from './ArticleList';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import NavBar from './NavBar';
+import { useEffect } from 'react';
+import React from 'react';
+import Article from './Article';
+
 
 function App() {
+  const [articles, setArticles] = React.useState([]);
+  function LoadArticles(uri){
+    axios.get(uri)
+      .then(res => {
+        const bd = res.data;
+        setArticles(bd)
+        console.log(bd);
+      });
+  }
+  function onLoadByArticle(typeSearch,atributeSearch){
+    LoadArticles(`http://localhost:5000/search/${typeSearch}/${atributeSearch}`)
+  }
+  useEffect(()=>{
+    LoadArticles("http://localhost:5000/show")
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <NavBar search={onLoadByArticle} load={LoadArticles}/>
+      <Switch>
+        <Route path="/" exact><div className="article-items"><ArticleList articles={articles}/></div></Route>
+        <Route path="/article/:id" exact><Article articles={articles}/></Route>
+      </Switch>
+      </>
+    
+
+    
   );
 }
 

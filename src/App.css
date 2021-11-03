@@ -1,38 +1,105 @@
-.App {
+body {
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+#root {
+  margin: 0 5%;
+}
+nav {
+  background-color: rgba(160, 82, 45, 0.5);
+  display: flex;
+  width: 100%;
+  height: 80px;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+nav div {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+}
+nav div div {
+  width: 50%;
+}
+nav input {
+  height: 50%;
+  align-self: center;
+  width: 250px;
+  border-radius: 30px;
+  outline: none;
+  padding-left: 10px;
+}
+nav ul {
+  display: flex;
+  list-style-type: none;
+  width: 50%;
+  align-items: center;
   text-align: center;
-}
+  align-self: center;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  margin-left: 10px;
+  height: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav ul li {
+  padding: 0 15px;
+  color: white;
+  width: 25%;
+  cursor: pointer;
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  margin: 0;
+  transition: 0.2s ease-in-out;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  display: flex;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul li span {
+  align-self: center;
+}
+nav ul li:last-child {
+  border-bottom-right-radius: 35px;
+  padding-right: 0;
+}
+nav ul li:hover {
+  font-size: 1.5rem;
+  background-color: rgb(160, 82, 45);
+  transition: 0.5s ease-in-out;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  align-self: center;
+  border-bottom-right-radius: 35px;
+}
+.article-items {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.article-items a {
+  text-decoration: none;
+  border: 2px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: black;
+  cursor: pointer;
+  background-color: rgba(160, 82, 45, 0.5);
+  transition: 0.5s ease-in-out;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.article-items a:hover {
+  font-size: 1.5rem;
+  background-color: rgb(160, 82, 45);
+  transition: 0.5s ease-in-out;
+}
+.article {
+  display: flex;
+  flex-direction: column;
+}
+.text-article {
+  text-align: justify;
+  padding-bottom: 50px;
 }
