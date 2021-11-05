@@ -6,27 +6,22 @@ function NavBar({search,
                  load,
                  paginate,
                  curentPage,
-                 totalPerPage,
-                 typeSearch,
-                 setTypeSearch,
-                 setAtributeSearch,
-                 atributeSearch}){
-    function asd(){setTypeSearch("byarticle"); 
-    paginate(1); 
-    search(typeSearch, atributeSearch, curentPage, totalPerPage)}
-    
+                 totalPerPage}){
+
+    const [intoValue,setIntoValue] = React.useState('');
     return(
         <nav>
             <div className="navbar">
                 <div>
-                    <input type="text"                            
-                           onChange={(e)=>setAtributeSearch(e.target.value)}/>
+                    <input type="text"
+                            value={intoValue}                            
+                           onChange={(e)=>setIntoValue(e.target.value)}/>
                 </div>
                 <ul>
-                    <li onClick={()=>{setTypeSearch("byarticle"); paginate(1); search("byarticle", atributeSearch, curentPage, totalPerPage)}}>
+                    <li onClick={()=>{search("byarticle",intoValue , curentPage, totalPerPage); paginate(1);}}>
                         <NavLink to="/">Search by article</NavLink>
                     </li>
-                    <li onClick={()=>{setTypeSearch("pullenti"); paginate(1); search("pullenti", atributeSearch, curentPage, totalPerPage)}}>
+                    <li onClick={()=>{search("pullenti", intoValue, curentPage, totalPerPage); paginate(1);}}>
                         <NavLink to="/">Search by entitis</NavLink>
                     </li>
                     <li onClick={()=>{load("http://localhost:5000/show"); paginate(1)}}>

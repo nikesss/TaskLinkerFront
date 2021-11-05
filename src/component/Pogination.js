@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Pogination = ({articlesPerPage,totalArticles,paginate,curentPaginate, loadArticles, typeSearch, atributeSearch})=>{
+const Pogination = ({articlesPerPage,totalArticles,paginate,curentPaginate})=>{
 
     const pageArticles = [];
     const totalPage = Math.ceil(totalArticles/articlesPerPage);
+    
     let startPage,endPage;
 
     if (totalPage <= 10) {
@@ -25,7 +26,7 @@ const Pogination = ({articlesPerPage,totalArticles,paginate,curentPaginate, load
     
     for(let i=startPage;i<=endPage;i++)
         pageArticles.push(i);
-    
+        console.log(pageArticles);
     if(totalArticles!=0){
         return(
             <div>
@@ -42,7 +43,7 @@ const Pogination = ({articlesPerPage,totalArticles,paginate,curentPaginate, load
                                 curentPaginate==number 
                                 ? 'pogination-number selected'
                                 : 'pogination-number'}>
-                                <NavLink to="/" onClick={()=>{paginate(number); loadArticles(typeSearch,atributeSearch,number,articlesPerPage)}}>
+                                <NavLink to="/" onClick={()=>{paginate(number)}}>
                                     {number}
                                 </NavLink>
                             </li>

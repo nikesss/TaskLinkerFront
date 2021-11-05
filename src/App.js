@@ -11,11 +11,8 @@ import Article from './component/Article';
 function App() {
 
   const [articles, setArticles] = React.useState([]);
-  const [totalArticles, setTotalArticles] = React.useState(0);
   const [curentPage,setCurentPage] = React.useState(1)
   const [articlesPerPage] = React.useState(7);
-  const [typeSearch, setTypeSearch] = React.useState([]);
-  const [atributeSearch, setAtributeSearch] = React.useState('');
   
 
   useEffect(()=>{
@@ -25,16 +22,20 @@ function App() {
   function LoadArticles(url){
     axios.get(url)
       .then(res => {
-        const bd = res.data.dbList;
+        const bd = res.data;
         setArticles(bd);
-        setTotalArticles(res.data.totalArticles);
+        console.log(bd)
       });
   }
 
-  function onLoadByArticle(typeSearch,atributeSearch,curentPage,totalPerPage){
+  function onLoadByArticle(typeSearch,atributeSearch){
     if(atributeSearch)
-      LoadArticles(`http://localhost:5000/search/${typeSearch}/${atributeSearch}/${curentPage}/${totalPerPage}/`);
+      LoadArticles(`http://localhost:5000/search/${typeSearch}/${atributeSearch}/`);
   }
+
+  const lastArticleIndex = curentPage * articlesPerPage;
+  const firstArticleIndex = lastArticleIndex - articlesPerPage;
+  const totalArticles = articles.slice(firstArticleIndex, lastArticleIndex)
 
   const paginate = pageNumber => setCurentPage(pageNumber);
 
@@ -44,23 +45,15 @@ function App() {
               curentPage={curentPage}
               totalPerPage={articlesPerPage}
               load={LoadArticles} 
-              paginate={paginate}
-              atributeSearch = {atributeSearch}
-              setAtributeSearch ={setAtributeSearch}
-              setTypeSearch={setTypeSearch}
-              typeSearch={typeSearch}/>
+              paginate={paginate}/>
       <Switch>
         <Route path="/" exact>
           <div className="article-items">
-            <ArticleList articles={articles}
-                         curentArticles = {totalArticles}
+            <ArticleList articles={totalArticles}
+                         totalArticles = {articles.length}
                          articlesPerPage={articlesPerPage}
                          curentPage={curentPage}
-                         paginate={paginate}
-                         atributeSearch = {atributeSearch}
-                         setAtributeSearch ={setAtributeSearch}
-                         typeSearch={typeSearch}
-                         loadArticles={onLoadByArticle}/>
+                         paginate={paginate}/>
           </div>
         </Route>
         <Route path="/article/:id" exact>

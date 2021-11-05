@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom';
 import Pogination from './Pogination';
 
 function ArticleList({articles,
-                      curentArticles,
+                      totalArticles,
                       articlesPerPage,
                       curentPage,
-                      paginate,
-                      loadArticles,
-                      typeSearch,
-                      atributeSearch}) {
+                      paginate}) {
   
       return (
         <>
@@ -21,12 +18,9 @@ function ArticleList({articles,
             </Link>)
         }
         <Pogination articlesPerPage={articlesPerPage}
-                    totalArticles = {curentArticles}
+                    totalArticles = {totalArticles}
                     curentPaginate = {curentPage}
-                    paginate = {paginate}
-                    atributeSearch = {atributeSearch}
-                    typeSearch={typeSearch} 
-                    loadArticles ={loadArticles}/>
+                    paginate = {paginate}/>
         </>    
     )
 }
