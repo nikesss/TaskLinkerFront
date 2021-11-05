@@ -80,7 +80,7 @@ nav ul li a {
   display: flex;
   flex-direction: column;
 }
-.article-items a {
+.article-items .item-article {
   text-decoration: none;
   border: 2px solid black;
   padding: 10px;
@@ -90,7 +90,7 @@ nav ul li a {
   background-color: rgba(160, 82, 45, 0.5);
   transition: 0.5s ease-in-out;
 }
-.article-items a:hover {
+.article-items .item-article:hover {
   font-size: 1.5rem;
   background-color: rgb(160, 82, 45);
   transition: 0.5s ease-in-out;
@@ -102,4 +102,59 @@ nav ul li a {
 .text-article {
   text-align: justify;
   padding-bottom: 50px;
+}
+.pagination-list {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+.pogination-number {
+  display: block;
+  padding: 2px;
+  border: 1px solid rgb(53, 53, 53);
+  width: 30px;
+  text-align: center;
+}
+.pagination a.active {
+  background-color: #4caf50;
+  color: white;
+}
+.pogination-number:hover {
+  background-color: #fff;
+}
+.pogination-number a {
+  color: black;
+  text-decoration: none;
+}
+.selected {
+  background-color: green;
+}
+.selected a {
+  color: white;
+}
+.selected a:hover {
+  color: black;
+}
+.visaul-pogenation {
+  font-size: 20px;
+  text-align: end;
+  margin: 0 10px;
+}
+.btn-back {
+  text-decoration: none;
+  color: white;
+  border: 1px solid black;
+  width: 100px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  background-color: rgba(160, 82, 45, 0.5);
+  transition: 0.2s ease-in-out;
+}
+.btn-back:hover {
+  background-color: rgb(160, 82, 45);
+  transition: 0.2s ease-in-out;
+  font-size: 1.5rem;
+  color: #4caf50;
 }
